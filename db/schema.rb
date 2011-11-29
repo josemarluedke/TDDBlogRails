@@ -11,7 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111128161314) do
+ActiveRecord::Schema.define(:version => 20111129115054) do
+
+  create_table "posts", :force => true do |t|
+    t.string   "title",          :limit => 250,                   :null => false
+    t.string   "excerpt",         :limit => 250
+    t.text     "body",                                            :null => false
+    t.boolean  "allow_comments",                :default => true, :null => false
+    t.integer  "user_id",                                         :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "posts", ["user_id"], :name => "index_posts_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string "name",     :null => false

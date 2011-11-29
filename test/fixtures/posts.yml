@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+rails_rules:
+  title: Rails rules
+  body: Rails is a killer framework built with Ruby
+  allow_comments: false
+  user_id: 1
+
+ruby_rules:
+  title: Ruby also rules
+  body: Ruby is a charming language
+  allow_comments: true
+  user_id: 1

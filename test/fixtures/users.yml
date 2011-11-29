@@ -7,6 +7,7 @@
 
 
 josemar:
-    name: Josemar Davi Luedke
-    email: josemarluedke@gmail.com
-    password: 12345
+  id: 1
+  name: Josemar Davi Luedke
+  email: josemarluedke@gmail.com
+  password: 12345
