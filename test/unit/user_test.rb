@@ -1,53 +1,56 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
-  
-  test "should be invalid" do
-    user = User.create(:name => nil, :email => nil, :password => nil)
+
+  test "Should be invalid" do
+    user = create :name => nil, :email => nil, :password => nil
     assert !user.valid?, "User shouldn't be created"
   end
   
-  test "should require name" do
-    user = User.create :name => nil
+  test "Should require name" do
+    user = create :name => nil
     assert user.errors[:name].any?, "Name should be required"
     assert !user.valid?, "User shoultdn't be created"
   end
   
-  test "should required email" do
-    user = User.create :email => nil
+  test "Should required email" do
+    user = create :email => nil
     assert user.errors[:email].any?, "E-mail should be required"
     assert !user.valid?, "User shouldn't be created"
   end
   
-  test "should deny bad email" do
-    user = User.create :email => "bad@format"
+  test "Should deny bad email" do
+    user = create :email => "bad@format"
     assert user.errors[:email].any?, "E-mail should be in a valid format"
     assert !user.valid?, "User shouldn't be created"
   end
   
-  test "should required password" do
-    user = User.create :password => nil
+  test "Should required password" do
+    user = create :password => nil
     assert user.errors[:password].any?, "Password should be required"
     assert !user.valid?, "User shouldn't be created"
   end
   
-  test "should required longer password" do
-    user = User.create :password => "1"
+  test "Should required longer password" do
+    user = create :password => "1"
     assert user.errors[:password].any?, "Password should be 4 characters or longer"
     assert !user.valid?, "User shouldn't be created"
   end
   
-  test "should deny duplicate user" do
-    user = User.create :name => "Josemar Davi", :email => "josemardavi@gmail.com", :password => "12345"
+  test "Should deny duplicate user" do
+    user = create :name => "Josemar Davi", :email => "josemardavi@gmail.com", :password => "12345"
     assert user.valid?, "User should be created"
     
-    user = User.create :name => "Josemar Davi", :email => "josemardavi@gmail.com", :password => "12345"
+    user = create :name => "Josemar Davi", :email => "josemardavi@gmail.com", :password => "12345"
     assert !user.valid?, "User shouldn't be created"
   end
   
-  
-  
+  private
+    def create options = {}
+      user = User.create({
+        :name => "Name",
+        :email => "email@example.com",
+        :password => "12345"
+      }.merge(options))
+    end
 end
