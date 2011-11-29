@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+rails_post:
+  name: Comment
+  email: email@test.com
+  url: www.test.com
+  active: false
+  body: Comment body
+  post_id: 1
