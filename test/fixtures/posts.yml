@@ -1,6 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
 
 rails_rules:
+  id: 1
   title: Rails rules
   body: Rails is a killer framework built with Ruby
   allow_comments: true
