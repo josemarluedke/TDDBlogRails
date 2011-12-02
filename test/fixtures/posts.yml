@@ -8,6 +8,7 @@ rails_rules:
   user_id: 1
 
 ruby_rules:
+  id: 2
   title: Ruby also rules
   body: Ruby is a charming language
   allow_comments: false
