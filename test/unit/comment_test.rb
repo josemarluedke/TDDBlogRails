@@ -37,6 +37,11 @@ class CommentTest < ActiveSupport::TestCase
     assert !comment.valid?, "Comment shouldn't be created"
   end
   
+  test "should be error when post does not exist" do
+    comment = create :post_id => 1111000
+    assert !comment.valid?, "Post doesn't exist, so it should be required"
+  end
+  
   test "should deny bad email" do
     comment = create :email => "bad@format"
     assert comment.errors[:email].any?, "E-mail should be in a valid format"

@@ -81,6 +81,13 @@ class PostTest < ActiveSupport::TestCase
     assert_equal [], comments, "Comments should be removed"
   end
   
+  test "title should be updated" do
+    post = Post.find_by_id posts(:rails_rules).id
+    post.title = "Bar"
+    post.save
+    assert_equal "Bar", Post.find_by_id(posts(:rails_rules).id).title
+  end
+  
   
   private
     def create options={}

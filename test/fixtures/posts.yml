@@ -3,6 +3,7 @@
 rails_rules:
   id: 1
   title: Rails rules
+  excerpt: Rails
   body: Rails is a killer framework built with Ruby
   allow_comments: true
   user_id: 1
@@ -10,6 +11,7 @@ rails_rules:
 ruby_rules:
   id: 2
   title: Ruby also rules
+  excerpt: Ruby
   body: Ruby is a charming language
   allow_comments: false
   user_id: 1

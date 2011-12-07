@@ -64,6 +64,13 @@ class UserTest < ActiveSupport::TestCase
     assert_equal [], posts, "Posts should be removed"
   end
 
+  test "name should be updated" do
+    user = User.find_by_id users(:josemar).id
+    user.name = "Josemar"
+    user.save
+    assert_equal "Josemar", User.find_by_id(users(:josemar).id).name
+  end
+
   private
     def create options = {}
       user = User.create({
