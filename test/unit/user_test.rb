@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  fixtures :users
+  fixtures :users, :posts
 
   test "should be valid" do
     user = create
@@ -49,6 +49,19 @@ class UserTest < ActiveSupport::TestCase
     
     user = create :name => "Josemar Davi", :email => "josemardavi@gmail.com", :password => "12345"
     assert !user.valid?, "User shouldn't be created"
+  end
+  
+  test "check all fixtures were loaded" do
+    assert_equal 1, User.all.count, "User should have had 1 users"
+  end
+  
+  test "Should be removed dependents posts" do
+    user = User.find_by_id users(:josemar).id
+    user.destroy
+    assert_equal false, User.exists?(users(:josemar).id), "User should be removed"
+    
+    posts = Post.find_all_by_user_id users(:josemar).id
+    assert_equal [], posts, "Posts should be removed"
   end
 
   private

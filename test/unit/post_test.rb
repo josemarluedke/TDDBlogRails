@@ -67,6 +67,21 @@ class PostTest < ActiveSupport::TestCase
     assert !post.valid?, "User doesn't exist, so it should be required"
   end
   
+  test "Should be 1 comment" do
+    post = Post.find_by_id posts(:rails_rules).id
+    assert_equal 1, post.comments.count, "Post should be 1 comment"
+  end
+  
+  test "Should be removed dependents comments" do
+    post = Post.find_by_id posts(:rails_rules).id
+    post.destroy
+    assert_equal false, Post.exists?(posts(:rails_rules).id), "Post should be removed"
+    
+    comments = Comment.find_all_by_post_id posts(:rails_rules).id
+    assert_equal [], comments, "Comments should be removed"
+  end
+  
+  
   private
     def create options={}
       Post.create({
