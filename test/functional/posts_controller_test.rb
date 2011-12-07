@@ -14,7 +14,7 @@ class PostsControllerTest < ActionController::TestCase
     assert_response :success
     assert_template "posts/show"
     
-    assert_select "div.title", posts(:rails_rules).title
+    assert_select "h3.title", posts(:rails_rules).title
   end
   
   test "should return not found page" do

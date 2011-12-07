@@ -7,5 +7,4 @@ class Post < ActiveRecord::Base
   validates :title, :length => {:maximum => 250}, :presence => false
   validates :excerpt, :length => {:maximum => 250}, :presence => false
   validates_associated :user
-  
 end

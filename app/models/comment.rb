@@ -5,6 +5,7 @@ class Comment < ActiveRecord::Base
   validates_numericality_of :post_id, :only_integer => true
   validates :email, :email => true
   validates_url_format_of :url, :allow_nill => true
+  validates_associated :post
   validate do 
     if post
       # Post should be available for comments

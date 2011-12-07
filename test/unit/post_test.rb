@@ -62,6 +62,11 @@ class PostTest < ActiveSupport::TestCase
     assert_equal 2, users(:josemar).posts.size, "User should have had 2 posts"
   end
   
+  test "should be error when user does not exist" do
+    post = create :user_id => 1111000
+    assert !post.valid?, "User doesn't exist, so it should be required"
+  end
+  
   private
     def create options={}
       Post.create({
