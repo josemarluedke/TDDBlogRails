@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class PostTest < ActiveSupport::TestCase
-  fixtures :users, :posts
   
   test "should be valid" do
     post = create

@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class CommentTest < ActiveSupport::TestCase
-  fixtures :users, :posts, :comments
   
   test "should be created" do
     comment = create :post_id => posts(:rails_rules).id
