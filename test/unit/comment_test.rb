@@ -2,6 +2,7 @@ require 'test_helper'
 
 class CommentTest < ActiveSupport::TestCase
   
+  
   test "should be created" do
     comment = create :post_id => posts(:rails_rules).id
     assert comment.valid?, "Comment should be created"

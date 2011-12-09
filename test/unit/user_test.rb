@@ -1,7 +1,11 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-
+  
+  def setup
+    @user = users(:josemar)
+  end
+  
   test "should be valid" do
     user = create
     assert user.valid?, "User should be created"
@@ -55,19 +59,19 @@ class UserTest < ActiveSupport::TestCase
   end
   
   test "Should be removed dependents posts" do
-    user = User.find_by_id users(:josemar).id
+    user = User.find_by_id @user.id
     user.destroy
-    assert_equal false, User.exists?(users(:josemar).id), "User should be removed"
+    assert_equal false, User.exists?(@user.id), "User should be removed"
     
-    posts = Post.find_all_by_user_id users(:josemar).id
+    posts = Post.find_all_by_user_id @user.id
     assert_equal [], posts, "Posts should be removed"
   end
 
   test "name should be updated" do
-    user = User.find_by_id users(:josemar).id
+    user = User.find_by_id @user.id
     user.name = "Josemar"
     user.save
-    assert_equal "Josemar", User.find_by_id(users(:josemar).id).name
+    assert_equal "Josemar", User.find_by_id(@user.id).name
   end
 
   private

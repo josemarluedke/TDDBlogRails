@@ -7,8 +7,13 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<h1>Tdd Blog</h1>
-
-	<%= yield %>
+	<div class="logo">Tdd Blog</div>
+	<div id="container">
+		<%= yield %>
+	</div>
+	<footer>
+		<span>Josemar Davi Luedke</span>
+		<%= image_tag 'rails.png' %>
+	</footer>
 </body>
 </html>

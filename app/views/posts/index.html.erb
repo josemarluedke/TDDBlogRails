@@ -1,11 +1,11 @@
 <% for post in @posts do %>
 	<article>
-		<h3 class="title"><%= link_to post.title, post %><a></h3>
+		<h3 class="title"><%= link_to post.title, post %></h3>
 		<span style="font-size: 12px; color: #999"><%= post.excerpt %></span>
 		<p><%= post.body %></p>
 		<p>
 			<%= raw "Comments: #{h post.comments.count} <br />" if post.allow_comments %>
-			<%= "Created by: #{post.user.name}" if post.user %>
+			<%= raw "Created by: #{ link_to h(post.user.name), post.user}" if post.user %>
 			<%= "Created at: #{post.created_at.strftime('%d/%m/%Y %H:%M')} " if post.created_at %>
 		</p>
 		<hr />

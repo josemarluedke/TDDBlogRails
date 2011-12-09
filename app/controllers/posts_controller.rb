@@ -5,6 +5,6 @@ class PostsController < ApplicationController
   end
   
   def show
-    (@post = Post.find_by_id params[:id]) || not_found
+    (@post = Post.find_by_id params[:id]) || (return not_found)
   end
 end
