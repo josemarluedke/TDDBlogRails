@@ -20,7 +20,7 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "should get show" do
-    get :show, {:id => users(:josemar).id}
+    get :show, {:id => @user.id}
     assert_response :success
     assert_template "users/show"
     assert_select "h1.name", @user.name
@@ -36,6 +36,23 @@ class UsersControllerTest < ActionController::TestCase
     get :login
     assert_response :success
     assert_template "users/login"
+  end
+  
+  test "should be redirect to users path if correct email and password" do
+    post :login, {:email => "josemarluedke@gmail.com", :password => "12345"}
+    assert_redirected_to users_path
+    
+    get :index
+    assert_response :success
+    assert_template "users/index"
+    assert_select "table tbody tr td.name", User.count
+  end
+  
+  test 'should be error message if incorrect email or passwrod' do
+    post :login, {:email => "josemarluedke@gmail.com", :password => "incorrect password"}
+    assert_response :success
+    assert_template "users/login"
+    assert_select "h3.message"
   end
 
   test "should destroy user" do
