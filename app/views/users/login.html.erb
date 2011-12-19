@@ -2,3 +2,11 @@
 <% if @message %>
 	<h3 class="message"><%= @message %></h3>
 <% end %>
+
+<%= form_tag 'login' do %>
+	<%= label_tag(:email, "E-mail:") %>
+	<%= email_field_tag(:email) %>
+	<%= label_tag(:password, "Password:") %>
+	<%= password_field_tag(:password) %>
+	<%= submit_tag("Login") %>
+<% end %>

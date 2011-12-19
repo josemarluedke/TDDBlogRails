@@ -10,6 +10,7 @@ TddBlog::Application.routes.draw do
     
     collection do
       get "login"
+      post "login"
     end
   end
   
